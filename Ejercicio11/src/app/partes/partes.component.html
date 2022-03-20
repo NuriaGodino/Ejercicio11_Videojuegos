@@ -1,8 +1,8 @@
 <h1>Formulario de videojuegos</h1>
 <div class="botones">
   <button (click)="insertar()" [disabled]="insertarDesabilitado">Insertar</button>
-  <button (click)="insertar()" [disabled]="insertarDesabilitado">Eliminar</button>
-  <button (click)="insertar()" [disabled]="insertarDesabilitado">Modificar</button>
+  <button (click)="eliminar()" [disabled]="insertarDesabilitado">Eliminar</button>
+  <button (click)="modificar()" [disabled]="insertarDesabilitado">Modificar</button>
 </div>
 <div class="form">
   <label for="id">ID</label>
@@ -25,18 +25,18 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th class="titulo">Titulo</th>
+      <th>Titulo</th>
       <th>Compañia</th>
-      <th>Calificacion</th>
+      <th>V.Media</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr *ngFor="let h of listaVideoJuegos">
-      <td>{{h.id}}</td>
-      <td>{{h.titulo}}</td>
-      <td>{{h.compania}}</td>
-      <td>{{h.valoracionMedia}}</td>
+    <tr *ngFor="let v of listaVideoJuegos" (click)="seleccionar(v)">
+      <td>{{v.id}}</td>
+      <td>{{v.titulo}}</td>
+      <td>{{v.compania}}</td>
+      <td>{{v.valoracionMedia}}</td>
     </tr>
   </tbody>
 </table>

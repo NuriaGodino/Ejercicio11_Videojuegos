@@ -31,9 +31,9 @@ export class PartesComponent implements OnInit {
   public insertar(){
     if(!this.hayErrores()){
       this.videojuego = new Videojuego(this.titulo, this.compania, this.valoracionMedia)
-      console.log(`Insertando videojuego: ${this.videojuego.toString()}`)
+      //console.log(`Insertando videojuego: ${this.videojuego.toString()}`)
       this.listaVideoJuegos.push(this.videojuego)
-      console.log("Videojuego insertado")
+      //console.log("Videojuego insertado")
     }
   }
 
@@ -56,6 +56,49 @@ export class PartesComponent implements OnInit {
       error=true
     }
     return error
+  }
+
+  public modificar(){
+    if(!this.hayErrores()){
+      for(let a=0; a<this.listaVideoJuegos.length; a++){
+        let juego:Videojuego = this.listaVideoJuegos[a]
+        if(juego.id == this.id){
+          this.listaVideoJuegos[a].titulo = this.titulo
+          this.listaVideoJuegos[a].compania = this.compania
+          this.listaVideoJuegos[a].valoracionMedia = this.valoracionMedia
+          break
+        }
+      }
+      //console.log("Modificando.." + this.videojuego?.toString)
+    }
+  }
+
+  public seleccionar(videojuego:Videojuego):void{
+    this.id = videojuego.id
+    this.titulo = videojuego.titulo
+    this.compania = videojuego.compania
+    this.valoracionMedia = videojuego.valoracionMedia
+  }
+
+
+  public eliminar(){
+    for(let a = 0; a<this.listaVideoJuegos.length; a++){
+      if(this.listaVideoJuegos[a].id == this.id){
+        this.listaVideoJuegos.splice(a,1)
+        break
+      }
+    }
+    this.vaciar()
+  }
+
+  private vaciar(){
+    this.id = 0
+    this.titulo = ""
+    this.compania = ""
+    this.valoracionMedia = 0
+
+    this.companiaObligatoria = false
+    this.tituloObligatorio = false
   }
 
   ngOnInit() {
