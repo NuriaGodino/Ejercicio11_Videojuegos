@@ -1,0 +1,37 @@
+<h1>Formulario de videojuegos</h1>
+<div class="form">
+  <div class="botones">
+    <button (click)="insertar()">Insertar</button>
+  </div>
+
+  <label for="id">ID</label>
+  <input type="text" name="id" id="id" disabled="disabled" value="{{id==0?'':id}}">
+
+  <label for="titulo">Titulo</label>
+  <input id="titulo" [(ngModel)]="titulo">
+
+  <label for="compañia">Compañia</label>
+  <input id="compañia" [(ngModel)]="compania">
+
+  <label for="valoracionMedia">V. Media</label>
+  <input id="valoracionMedia" [(ngModel)]="valoracionMedia">
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Titulo</th>
+      <th>Compañia</th>
+      <th>Calificacion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let h of listaVideoJuegos">
+      <td>{{h.id}}</td>
+      <td>{{h.titulo}}</td>
+      <td>{{h.compania}}</td>
+      <td>{{h.valoracionMedia}}</td>
+    </tr>
+  </tbody>
+</table>
