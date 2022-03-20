@@ -1,26 +1,31 @@
 <h1>Formulario de videojuegos</h1>
+<div class="botones">
+  <button (click)="insertar()" [disabled]="insertarDesabilitado">Insertar</button>
+  <button (click)="insertar()" [disabled]="insertarDesabilitado">Eliminar</button>
+  <button (click)="insertar()" [disabled]="insertarDesabilitado">Modificar</button>
+</div>
 <div class="form">
-  <div class="botones">
-    <button (click)="insertar()">Insertar</button>
-  </div>
-
   <label for="id">ID</label>
   <input type="text" name="id" id="id" disabled="disabled" value="{{id==0?'':id}}">
 
   <label for="titulo">Titulo</label>
   <input id="titulo" [(ngModel)]="titulo">
+  <span class="mensaje" [hidden]="tituloObligatorio">El titulo es obligatorio</span>
 
   <label for="compañia">Compañia</label>
   <input id="compañia" [(ngModel)]="compania">
+  <span class="mensaje" [hidden]="companiaObligatoria">La compañia es obligatoria</span>
 
   <label for="valoracionMedia">V. Media</label>
   <input id="valoracionMedia" [(ngModel)]="valoracionMedia">
+  <span class="mensaje" [hidden]="minValoracionMedia">La calificacion debe ser mayor que 0</span>
+  <span class="mensaje" [hidden]="maxValoracionMedia">La calificacion debe ser menor que 6</span>
 </div>
 <table>
   <thead>
     <tr>
       <th>ID</th>
-      <th>Titulo</th>
+      <th class="titulo">Titulo</th>
       <th>Compañia</th>
       <th>Calificacion</th>
     </tr>
