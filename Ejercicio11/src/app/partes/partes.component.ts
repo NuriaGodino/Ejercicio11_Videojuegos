@@ -34,6 +34,10 @@ export class PartesComponent implements OnInit {
       //console.log(`Insertando videojuego: ${this.videojuego.toString()}`)
       this.listaVideoJuegos.push(this.videojuego)
       //console.log("Videojuego insertado")
+      this.tituloObligatorio = true
+      this.companiaObligatoria = true
+      this.minValoracionMedia = true
+      this.maxValoracionMedia = true
     }
   }
 
@@ -66,10 +70,14 @@ export class PartesComponent implements OnInit {
           this.listaVideoJuegos[a].titulo = this.titulo
           this.listaVideoJuegos[a].compania = this.compania
           this.listaVideoJuegos[a].valoracionMedia = this.valoracionMedia
+
+          this.tituloObligatorio = true
+          this.companiaObligatoria = true
+          this.minValoracionMedia = true
+          this.maxValoracionMedia = true
           break
         }
       }
-      //console.log("Modificando.." + this.videojuego?.toString)
     }
   }
 
@@ -88,17 +96,6 @@ export class PartesComponent implements OnInit {
         break
       }
     }
-    this.vaciar()
-  }
-
-  private vaciar(){
-    this.id = 0
-    this.titulo = ""
-    this.compania = ""
-    this.valoracionMedia = 0
-
-    this.companiaObligatoria = false
-    this.tituloObligatorio = false
   }
 
   ngOnInit() {
